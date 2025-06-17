@@ -1,48 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Top 3 Tourist Cities in Japan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accessible Photo Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    figure {
+      border: 2px solid #ccc;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+    figure:hover,
+    figure:focus {
+      outline: 3px solid #007BFF;
+      transform: scale(1.05);
+    }
+    figcaption {
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
 </head>
-<body>
-    <header>
-        <h1>Top 3 Tourist Cities in Japan</h1>
-    </header>
-    <main>
-        <section>
-            <h2>1. Tokyo</h2>
-            <img src="https://goldensmiletravel.com/uploads/images/2023/07/03/image4-1688355394.jpg" alt="Tokyo city skyline with Tokyo Tower" />
-            <p>Tokyo is the capital and largest city of Japan. It is known for modernity and tradition blending
-                together.</p>
-        </section>
+<body onload="addTabFocus()">
+  <h1>My Accessible Photo Gallery</h1>
+  <section class="gallery">
+    <figure>
+      <img src="https://via.placeholder.com/200?text=Image+1" alt="A beautiful sunset over a mountain">
+      <figcaption>Sunset</figcaption>
+    </figure>
+    <figure>
+      <img src="https://via.placeholder.com/200?text=Image+2" alt="A calm lake surrounded by trees">
+      <figcaption>Lake View</figcaption>
+    </figure>
+    <figure>
+      <img src="https://via.placeholder.com/200?text=Image+3" alt="A cat lounging on a sunny windowsill">
+      <figcaption>Cat in Sunlight</figcaption>
+    </figure>
+    <figure>
+      <img src="https://via.placeholder.com/200?text=Image+4" alt="A scenic hiking trail in autumn">
+      <figcaption>Autumn Trail</figcaption>
+    </figure>
+    <figure>
+      <img src="https://via.placeholder.com/200?text=Image+5" alt="Close-up of a blooming sunflower">
+      <figcaption>Sunflower</figcaption>
+    </figure>
+    <figure>
+      <img src="https://via.placeholder.com/200?text=Image+6" alt="Snow-covered trees in winter">
+      <figcaption>Winter Forest</figcaption>
+    </figure>
+  </section>
 
-        <section>
-            <h2>2. Kyoto</h2>
-            <img src="https://duhocvietnhat.edu.vn/wp-content/uploads/Slide3.jpg" alt="Historic temples and cherry blossoms in Kyoto" />
-            <p>Kyoto is famous for its beautiful temples and traditional culture.</p>
-        </section>
-        <section>
-            <h2>3. Osaka</h2>
-            <img src="https://cdn.saigontimestravel.com/storage/images/retail/wp-content/uploads/2023/12/Du-lich-Osaka-7.jpg" alt="Dotonbori Street in Osaka at night with neon lights" />
-            <p>Osaka is known for its food, entertainment, and friendly people.</p>
-        </section>
+  <script>
+    // Mouse event handlers
+    function handleMouseOver(event) {
+      console.log("Mouse over:", event.currentTarget);
+      event.currentTarget.style.backgroundColor = "#e0f7fa";
+    }
 
-        <h3>Why Visit Japan?</h3>
-        <ul>
-            <li>Rich culture and history</li>
-            <li>Delicious cuisine</li>
-            <li>Efficient transportation</li>
-        </ul>
+    function handleMouseLeave(event) {
+      console.log("Mouse left:", event.currentTarget);
+      event.currentTarget.style.backgroundColor = "";
+    }
 
-        <p>Read more on
-            <a href="https://en.wikipedia.org/wiki/Tourism_in_Japan" target="_blank" rel="noopener">Wikipedia</a>.
-        </p>
-    </main>
-    <footer>
-        <p>&copy; 2025 by Your Name. All rights reserved.</p>
-    </footer>
+    // Focus/blur event handlers
+    function handleFocus(event) {
+      console.log("Focus on:", event.currentTarget);
+      event.currentTarget.style.backgroundColor = "#fff3cd";
+    }
+
+    function handleBlur(event) {
+      console.log("Blur from:", event.currentTarget);
+      event.currentTarget.style.backgroundColor = "";
+    }
+
+    // Add tabindex and event listeners
+    function addTabFocus() {
+      console.log("Page loaded. Adding tabindex and listeners...");
+      const figures = document.querySelectorAll("figure");
+
+      for (let i = 0; i < figures.length; i++) {
+        figures[i].setAttribute("tabindex", "0");
+
+        // Event listeners
+        figures[i].addEventListener("mouseover", handleMouseOver);
+        figures[i].addEventListener("mouseleave", handleMouseLeave);
+        figures[i].addEventListener("focus", handleFocus);
+        figures[i].addEventListener("blur", handleBlur);
+
+        console.log(`Tabindex and events added to figure ${i + 1}`);
+      }
+    }
+  </script>
 </body>
-
 </html>
