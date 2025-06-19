@@ -1,47 +1,99 @@
-/* ========== DEFAULT STYLES (MOBILE VIEW) ========== */
+/* =========================
+   Default: Mobile First
+   ========================= */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  scroll-behavior: smooth;
 }
 
-.container {
+header, footer {
   text-align: center;
+  padding: 1em;
+  background-color: #eeeeee;
 }
 
-.box {
-  background-color: #f2f2f2;
-  margin: 10px;
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
   padding: 10px;
 }
 
-.box img {
+figure {
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+img {
   width: 100%;
   height: auto;
+  display: block;
 }
 
-/* ========== TABLET VIEW - min-width: 772px ========== */
+/* =========================
+   Tablet View (min-width: 772px)
+   ========================= */
 @media (min-width: 772px) {
-  .container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  main {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .box {
-    width: 45vw;
-    margin: 10px;
+  figure {
+    border-radius: 50%;
   }
 
-  .box img {
-    max-height: 30vh;
-    object-fit: cover;
+  figure:last-child {
+    grid-column: span 2;
   }
 }
 
-/* ========== LARGE SCREEN VIEW - min-width: 998px ========== */
-@media (min-width: 998px) {
-  .box {
-    width: 30vw;
+/* =========================
+   Large Screen View (min-width: 992px)
+   ========================= */
+@media (min-width: 992px) {
+  figure {
+    border-radius: 0;
+  }
+
+  figure:nth-child(3n) {
+    grid-column: span 2;
+  }
+}
+
+/* =========================
+   Prefers Reduced Motion
+   ========================= */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* =========================
+   Dark Mode
+   ========================= */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111111;
+    color: #eeeeee;
+  }
+
+  header, footer {
+    background-color: #222222;
+  }
+
+  figure {
+    background-color: #333333;
+    color: #ffeb3b; /* Light yellow for contrast */
+    border-color: black;
   }
 }
