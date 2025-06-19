@@ -1,0 +1,47 @@
+/* ========== DEFAULT STYLES (MOBILE VIEW) ========== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.box {
+  background-color: #f2f2f2;
+  margin: 10px;
+  padding: 10px;
+}
+
+.box img {
+  width: 100%;
+  height: auto;
+}
+
+/* ========== TABLET VIEW - min-width: 772px ========== */
+@media (min-width: 772px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .box {
+    width: 45vw;
+    margin: 10px;
+  }
+
+  .box img {
+    max-height: 30vh;
+    object-fit: cover;
+  }
+}
+
+/* ========== LARGE SCREEN VIEW - min-width: 998px ========== */
+@media (min-width: 998px) {
+  .box {
+    width: 30vw;
+  }
+}
